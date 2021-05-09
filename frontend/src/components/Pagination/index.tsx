@@ -11,8 +11,10 @@ const Pagination = ({ page, onPageChange }: Props) => {
 
     const itensBefore = [];
 
+    const totalColumnsBefore = 5;
+
     let beginNumberColumn = page.number - 4;
-    let endNumberColumn = page.number + 5;
+    let endNumberColumn = page.number + totalColumnsBefore;
 
     if (endNumberColumn > page.totalPages) {
         endNumberColumn = page.totalPages;
@@ -27,9 +29,9 @@ const Pagination = ({ page, onPageChange }: Props) => {
         }
 
     } else {
-        const test = endNumberColumn - page.number;
-        if (test != 5) {
-            const diferenca = 5 - test;
+        const diff = endNumberColumn - page.number;
+        if (diff != totalColumnsBefore) {
+            const diferenca = totalColumnsBefore - diff;
             beginNumberColumn = (diferenca * -1) + beginNumberColumn;
         }
     }
